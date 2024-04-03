@@ -33,6 +33,7 @@ export const FullscreenWrapper = styled.div`
   .slick-slide {
     display: flex !important;
     align-items: center;
+    justify-content: center;
     height: 100vh;
   }
 `;
@@ -40,7 +41,7 @@ export const FullscreenWrapper = styled.div`
 export const FullscreenSlide = styled.div`
   flex-shrink: 0;
   position: relative;
-  width: fit-content;
+  width: 100vw;
   max-width: 100%;
   height: 100%;
   display: flex;
@@ -50,11 +51,11 @@ export const FullscreenSlide = styled.div`
 
   & > img,
   & > video {
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     object-fit: contain;
     object-position: center;
-    border-radius: none;
+    border-radius: 0;
   }
 `;
 

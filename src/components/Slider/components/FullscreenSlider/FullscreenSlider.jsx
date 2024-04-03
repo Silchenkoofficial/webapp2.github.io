@@ -26,10 +26,10 @@ export const FullscreenSlider = ({
   const [isHeaderShow, setIsHeaderShow] = useState(true);
   const slideRefs = useRef(children.map(() => React.createRef()));
   const backgroundRef = useRef(null);
-
-  let startY = 0;
-  let deltaY = 0;
-  let startTime = new Date();
+  const [startY, setStartY] = useState(0);
+  const [deltaY, setDeltaY] = useState(0);
+  const [startTime, setStartTime] = useState(new Date());
+  const [isDragging, setIsDragging] = useState(false);
 
   const settings = {
     dots: false,
@@ -50,6 +50,12 @@ export const FullscreenSlider = ({
       });
     }
   }, []);
+  
+  //useEffect(() => {
+  //  if (selectedIdx !== null) {
+  //    settings.initialSlide = selectedIdx;
+  //  }
+  //}, [selectedIdx])
 
   const handleDelete = (index) => {
     onDelete(children[index].props["data-file"].name);
@@ -63,8 +69,9 @@ export const FullscreenSlider = ({
   };
 
   const handleTouchStart = (e) => {
-    startY = e.touches[0].clientY;
-    startTime = new Date();
+    setStartY(e.touches[0].clientY);
+    setStartTime(new Date());
+    setIsDragging(true);
   };
 
   // let scale = 1; // Начальное значение масштаба
@@ -87,13 +94,18 @@ export const FullscreenSlider = ({
   // const newScale = calculateScale(event.deltaY);
 
   const handleTouchMove = (e, index) => {
-    const currentY = e.touches[0].clientY;
-    deltaY = currentY - startY;
-    slideRefs.current[index].current.style.transform =
-      `translateY(${deltaY}px) scale(${Math.max(0.6, Math.min(1, 1 - Math.abs(deltaY) * 0.001))})`;
-    backgroundRef.current.style.backgroundColor = `rgba(0, 0, 0, ${Math.max(0, Math.min(1, 1 - Math.abs(deltaY) * 0.002))})`;
-    slideRefs.current[index].current.style.transition = `none`;
-    backgroundRef.current.style.transition = `none`;
+    if (isDragging) {
+      const currentY = e.touches[0].clientY;
+      setDeltaY(currentY - startY);
+
+      // requestAnimationFrame(() => {
+      slideRefs.current[index].current.style.transform =
+        `translateY(${deltaY}px) scale(${Math.max(0.6, Math.min(1, 1 - Math.abs(deltaY) * 0.001))})`;
+      backgroundRef.current.style.backgroundColor = `rgba(0, 0, 0, ${Math.max(0, Math.min(1, 1 - Math.abs(deltaY) * 0.002))})`;
+      slideRefs.current[index].current.style.transition = `none`;
+      backgroundRef.current.style.transition = `none`;
+      // });
+    }
   };
 
   const handleTouchEnd = (e, index) => {
@@ -103,10 +115,15 @@ export const FullscreenSlider = ({
     if (Math.abs(deltaY) > 200 || (timeDiff < 300 && Math.abs(deltaY) > 50)) {
       closeFullscreen();
     }
+
+    // requestAnimationFrame(() => {
     slideRefs.current[index].current.style.transform = `translateY(0)`;
     backgroundRef.current.style.backgroundColor = `rgba(0, 0, 0, 1)`;
     slideRefs.current[index].current.style.transition = `transform 0.3s`;
     backgroundRef.current.style.transition = `background-color 0.3s`;
+    setIsDragging(false);
+    setDeltaY(0);
+    // });
   };
 
   return (

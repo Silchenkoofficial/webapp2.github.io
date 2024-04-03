@@ -1,13 +1,13 @@
-import React, { useState, memo } from 'react';
+import React, {useState, memo, useEffect} from 'react';
 import { SliderWrapper, Slide, DeleteButton, TrashIcon } from './Slider.styled';
 import { FullscreenSlider } from './components';
 
 export const Slider = memo(({ children, onDelete }) => {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [selectedIdx, setSelectedIdx] = useState(null);
-
-  const openFullscreen = (e, index) => {
-    setSelectedIdx(index);
+  
+  const openFullscreen = async (e, index) => {
+    await setSelectedIdx(index);
     setIsFullscreen(true);
   };
 
