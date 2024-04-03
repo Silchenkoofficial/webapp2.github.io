@@ -41,7 +41,7 @@ export const FullscreenSlider = ({
   useEffect(() => {
     if (tg) {
       tg.BackButton.isVisible = true;
-      tg.onClick(() => {
+      tg.BackButton.onClick(() => {
         setIsFullscreen(false);
         tg.BackButton.isVisible = false;
       });
