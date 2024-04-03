@@ -42,8 +42,7 @@ export const FullscreenSlider = ({
     if (tg) {
       tg.BackButton.isVisible = true;
       tg.BackButton.onClick(() => {
-        setIsFullscreen(false);
-        tg.BackButton.isVisible = false;
+        closeFullscreen();
       });
     }
   }, []);
@@ -54,6 +53,9 @@ export const FullscreenSlider = ({
 
   const closeFullscreen = () => {
     setIsFullscreen(false);
+    if (tg) {
+      tg.BackButton.isVisible = false;
+    }
   };
 
   return (
