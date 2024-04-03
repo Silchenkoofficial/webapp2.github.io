@@ -6,7 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="3389d213-04d1-411c-83e8-b7d07e323e1b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FileInput/FileInput.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FileInput/FileInput.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Slider/Slider.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Slider/Slider.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Slider/Slider.styled.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Slider/Slider.styled.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Slider/components/FullscreenSlider/FullscreenSlider.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Slider/components/FullscreenSlider/FullscreenSlider.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Slider/components/FullscreenSlider/FullscreenSlider.styled.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Slider/components/FullscreenSlider/FullscreenSlider.styled.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Slider/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Slider/components/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/file.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/file.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +61,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1712137029599</updated>
-      <workItem from="1712137030881" duration="1191000" />
+      <workItem from="1712137030881" duration="8535000" />
     </task>
     <servers />
   </component>

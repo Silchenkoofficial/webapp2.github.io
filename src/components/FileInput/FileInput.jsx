@@ -1,27 +1,28 @@
-import { useEffect, useRef, useState } from 'react';
-import { Button } from '../Button';
+import { useEffect, useRef, useState } from "react";
+import { Button } from "../Button";
 import {
   Wrapper,
   AddPhotoIcon,
   InputWarning,
   AlertIcon,
-} from './FileInput.styled';
-import { Slider } from '../../components';
-import { useStore } from '../../store/StoreContext';
-import { useConfirm } from '../../hooks/useConfirm';
+} from "./FileInput.styled";
+import { MediaViewer, Slider } from "../../components";
+import { useStore } from "../../store/StoreContext";
+import { useConfirm } from "../../hooks/useConfirm";
+import { VideoSlide } from "../Slider/components";
 
 const FilesProperties = {
   photos: {
-    folder: 'start_photos',
-    bot: 'photos_tg_bot',
+    folder: "start_photos",
+    bot: "photos_tg_bot",
   },
   attachments: {
-    folder: 'attachments',
-    bot: 'attachments_tg_bot',
+    folder: "attachments",
+    bot: "attachments_tg_bot",
   },
   acts: {
-    folder: 'acts',
-    bot: 'completion_act_files_tg_bot',
+    folder: "acts",
+    bot: "completion_act_files_tg_bot",
   },
 };
 
@@ -57,10 +58,10 @@ export const FileInput = ({ type, onlySlider = false }) => {
 
   const handleDeleteFile = async (fileName) => {
     setConfirm({
-      title: 'Вы действительно хотите удалить эту фотографию?',
-      type: 'confirm',
-      confirmText: 'Удалить',
-      dismissText: 'Отменить',
+      title: "Вы действительно хотите удалить эту фотографию?",
+      type: "confirm",
+      confirmText: "Удалить",
+      dismissText: "Отменить",
     }).then(
       async () => {
         setIsMoreThanTen(false);
@@ -78,26 +79,27 @@ export const FileInput = ({ type, onlySlider = false }) => {
     <>
       <Confirm />
       <Wrapper>
-        <Slider onDelete={handleDeleteFile}>
+        <MediaViewer
+          files={files[type]}
+          type={type}
+          isMoreThanTen={isMoreThanTen}
+          setIsMoreThanTen={setIsMoreThanTen}
+        />
+        {/* <Slider onDelete={handleDeleteFile}>
           {files[type] &&
             files[type].length > 0 &&
             files[type].map((file, index) =>
-              file.type?.startsWith('image/') ? (
+              file.type?.startsWith("image/") ? (
                 <img
                   className="image-slide"
                   src={URL.createObjectURL(file)}
                   data-file={file}
                 />
               ) : (
-                file.type?.startsWith('video/') && (
-                  <video className="video-slide" autoPlay data-file={file}>
-                    <source src={URL.createObjectURL(file)} type={file.type} />
-                    Your browser does not support the video tag.
-                  </video>
-                )
+                <VideoSlide file={file} data-file={file} />
               )
             )}
-        </Slider>
+        </Slider> */}
         {!onlySlider && (
           <>
             <input
@@ -106,7 +108,7 @@ export const FileInput = ({ type, onlySlider = false }) => {
               accept="image/*,video/*"
               onChange={handleFileChange}
               multiple
-              style={{ display: 'none' }}
+              style={{ display: "none" }}
             />
             <Button
               variant="secondary"
@@ -115,17 +117,17 @@ export const FileInput = ({ type, onlySlider = false }) => {
             >
               <AddPhotoIcon />
               {files[type] && files[type].length > 0
-                ? 'Добавить ещё фото/видео'
-                : 'Добавить фото/видео'}
+                ? "Добавить ещё фото/видео"
+                : "Добавить фото/видео"}
             </Button>
             <InputWarning isError={isMoreThanTen}>
               {isMoreThanTen && <AlertIcon />}
               <div>
                 {isMoreThanTen
-                  ? 'Загружены только первые 10 фото/видео т.к. при загрузке было выбрано большее количество.'
+                  ? "Загружены только первые 10 фото/видео т.к. при загрузке было выбрано большее количество."
                   : files[type] && files[type]?.length === 10
-                    ? 'Загружено макс. количество: 10 фото/видео'
-                    : 'Макс. количество: 10 фото/видео'}
+                    ? "Загружено макс. количество: 10 фото/видео"
+                    : "Макс. количество: 10 фото/видео"}
               </div>
             </InputWarning>
           </>

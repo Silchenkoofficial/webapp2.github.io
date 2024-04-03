@@ -1,3 +1,4 @@
-import { FullscreenSlider } from './FullscreenSlider';
+import { FullscreenSlider } from "./FullscreenSlider";
+import { VideoSlide } from "./VideoSlide";
 
-export { FullscreenSlider };
+export { FullscreenSlider, VideoSlide };

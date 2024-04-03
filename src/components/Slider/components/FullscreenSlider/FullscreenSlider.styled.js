@@ -50,12 +50,12 @@ export const FullscreenSlide = styled.div`
   outline: none;
 
   & > img,
-  & > video {
-    width: 100%;
+  & video {
+    width: 100% !important;
     height: 100vh;
     object-fit: contain;
     object-position: center;
-    border-radius: 0;
+    border-radius: 0 !important;
   }
 `;
 
@@ -71,12 +71,24 @@ export const FullscreenHeader = styled.div`
   background-color: rgba(0, 0, 0, 0.8);
   color: #fff;
   opacity: ${(props) => (props.isHeaderShow ? "1" : "0")};
-
   transition: opacity 0.4s;
 
   & > div {
     flex: 1;
   }
+`;
+
+export const FullscreenFooter = styled.div`
+  padding: 18px 24px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  opacity: ${(props) => (props.isHeaderShow ? "1" : "0")};
+  transition: opacity 0.4s;
 `;
 
 export const TrashWrapper = styled.div`
@@ -97,8 +109,6 @@ export const TrashIcon = styled(trashSVG)`
   width: 24px;
   height: 24px;
 `;
-
-export const BackButtonWrapper = styled.div``;
 
 export const BackButton = styled.div`
   display: flex;

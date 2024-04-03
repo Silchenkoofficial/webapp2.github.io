@@ -1,8 +1,8 @@
 export const getVideoDuration = (file) => {
   return new Promise((resolve) => {
-    const videoElement = document.createElement('video');
+    const videoElement = document.createElement("video");
     videoElement.src = URL.createObjectURL(file);
-    videoElement.addEventListener('loadedmetadata', () => {
+    videoElement.addEventListener("loadedmetadata", () => {
       resolve(videoElement.duration);
       URL.revokeObjectURL(videoElement.src);
     });

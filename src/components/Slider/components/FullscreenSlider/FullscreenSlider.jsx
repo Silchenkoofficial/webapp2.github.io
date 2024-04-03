@@ -12,7 +12,7 @@ import {
   FullscreenWrapper,
   TrashIcon,
   FullscreenSlide,
-  BackButtonWrapper,
+  FullscreenFooter,
 } from "./FullscreenSlider.styled";
 
 export const FullscreenSlider = ({
@@ -20,6 +20,7 @@ export const FullscreenSlider = ({
   onDelete,
   selectedIdx,
   setSelectedIdx,
+  isFullscreen,
   setIsFullscreen,
 }) => {
   const tg = window.Telegram?.WebApp;
@@ -50,6 +51,9 @@ export const FullscreenSlider = ({
 
   const handleDelete = (index) => {
     onDelete(children[index].props["data-file"].name);
+    if (tg) {
+      tg.BackButton.isVisible = false;
+    }
   };
 
   const closeFullscreen = () => {
@@ -59,16 +63,18 @@ export const FullscreenSlider = ({
     }
   };
 
+  const toggleHeaderShow = (e) => setIsHeaderShow((prev) => !prev);
+
   return (
     <Portal>
       <FullscreenWrapper ref={backgroundRef}>
         <FullscreenHeader isHeaderShow={isHeaderShow}>
-          <BackButtonWrapper>
-            {/*<BackButton onClick={closeFullscreen}>*/}
-            {/*  <ArrowLeftIcon />*/}
-            {/*  Назад*/}
-            {/*</BackButton>*/}
-          </BackButtonWrapper>
+          <div>
+            <BackButton onClick={closeFullscreen}>
+              <ArrowLeftIcon />
+              Назад
+            </BackButton>
+          </div>
           <FilesCounter>
             {selectedIdx + 1} из {children.length}
           </FilesCounter>
@@ -84,19 +90,25 @@ export const FullscreenSlider = ({
           }}
         >
           <ReactSlick {...settings} className={"slider-container"}>
-            {React.Children.map(children, (child, index) => {
+            {React.Children.map(children, (child) => {
+              console.log(child);
               return (
-                <FullscreenSlide
-                  key={index}
-                  ref={slideRefs.current[index]}
-                  onClick={(e) => setIsHeaderShow((prev) => !prev)}
-                >
-                  {child}
-                </FullscreenSlide>
+                <>
+                  <FullscreenSlide
+                    key={child.key}
+                    ref={slideRefs.current[child.key]}
+                    onClick={toggleHeaderShow}
+                  >
+                    {child}
+                  </FullscreenSlide>
+                </>
               );
             })}
           </ReactSlick>
         </div>
+        <FullscreenFooter isHeaderShow={isHeaderShow}>
+          <div>asdasd</div>
+        </FullscreenFooter>
       </FullscreenWrapper>
     </Portal>
   );

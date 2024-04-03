@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { ReactComponent as trashSVG } from '../../assets/trash.svg';
+import styled from "styled-components";
+import { ReactComponent as trashSVG } from "../../assets/trash.svg";
 
 export const SliderWrapper = styled.div`
   height: 268px;
@@ -28,7 +28,7 @@ export const Slide = styled.div`
   align-items: center;
 
   & > img,
-  & > video {
+  & video {
     max-width: 100%;
     height: 100%;
     object-fit: cover;

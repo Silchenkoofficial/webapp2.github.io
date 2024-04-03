@@ -1,13 +1,13 @@
-import React, {useState, memo, useEffect} from 'react';
-import { SliderWrapper, Slide, DeleteButton, TrashIcon } from './Slider.styled';
-import { FullscreenSlider } from './components';
+import React, { useState, memo, useEffect } from "react";
+import { SliderWrapper, Slide, DeleteButton, TrashIcon } from "./Slider.styled";
+import { FullscreenSlider } from "./components";
 
 export const Slider = memo(({ children, onDelete }) => {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [selectedIdx, setSelectedIdx] = useState(null);
-  
-  const openFullscreen = async (e, index) => {
-    await setSelectedIdx(index);
+
+  const openFullscreen = (e, index) => {
+    setSelectedIdx(index);
     setIsFullscreen(true);
   };
 
@@ -23,7 +23,7 @@ export const Slider = memo(({ children, onDelete }) => {
                   <DeleteButton
                     onClick={(e) => {
                       e.stopPropagation();
-                      onDelete(child.props['data-file'].name);
+                      onDelete(child.props["data-file"].name);
                     }}
                   >
                     <TrashIcon />
@@ -39,6 +39,7 @@ export const Slider = memo(({ children, onDelete }) => {
             onDelete={onDelete}
             selectedIdx={selectedIdx}
             setSelectedIdx={setSelectedIdx}
+            isFullscreen={isFullscreen}
             setIsFullscreen={setIsFullscreen}
           />
         )}
