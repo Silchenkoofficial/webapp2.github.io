@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import { ReactComponent as chevroneSVG } from '../../../../assets/chevrone.svg';
-import { ReactComponent as trashSVG } from '../../../../assets/trash.svg';
+import styled from "styled-components";
+import { ReactComponent as chevroneSVG } from "../../../../assets/chevrone.svg";
+import { ReactComponent as trashSVG } from "../../../../assets/trash.svg";
 
 export const FullscreenWrapper = styled.div`
   position: fixed;
@@ -61,9 +61,10 @@ export const FullscreenHeader = styled.div`
   z-index: 5;
   display: flex;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.8);
+  /* background-color: rgba(0, 0, 0, 0.8); */
+  background-color: #18232e;
   color: #fff;
-  opacity: ${(props) => (props.isHeaderShow ? '1' : '0')};
+  opacity: ${(props) => (props.isHeaderShow ? "1" : "0")};
 
   transition: opacity 0.4s;
 
