@@ -29,6 +29,7 @@ export const FullscreenSlider = ({
 
   let startY = 0;
   let deltaY = 0;
+  let startTime = new Date();
 
   const settings = {
     dots: false,
@@ -63,22 +64,49 @@ export const FullscreenSlider = ({
 
   const handleTouchStart = (e) => {
     startY = e.touches[0].clientY;
+    startTime = new Date();
   };
+
+  // let scale = 1; // Начальное значение масштаба
+  // const scaleFactor = 0.005; // Коэффициент масштабирования
+  // const minScale = 0.6; // Минимальное значение масштаба
+  // const maxScale = 1; // Максимальное значение масштаба
+
+  // function calculateScale(deltaY) {
+  //   // Вычисляем изменение масштаба
+  //   const scaleChange = deltaY * scaleFactor;
+
+  //   // Обновляем значение масштаба, ограничивая его минимальным и максимальным значениями
+  //   scale = Math.max(minScale, Math.min(maxScale, scale - scaleChange));
+
+  //   return scale;
+  // }
+
+  // // Пример использования функции
+  // // Предположим, что event.deltaY получено из обработчика событий прокрутки или жеста
+  // const newScale = calculateScale(event.deltaY);
 
   const handleTouchMove = (e, index) => {
     const currentY = e.touches[0].clientY;
     deltaY = currentY - startY;
     slideRefs.current[index].current.style.transform =
-      `translateY(${-deltaY}px)`;
+      `translateY(${deltaY}px) scale(${Math.max(0.6, Math.min(1, 1 - Math.abs(deltaY) * 0.001))})`;
+    backgroundRef.current.style.backgroundColor = `rgba(0, 0, 0, ${Math.max(0, Math.min(1, 1 - Math.abs(deltaY) * 0.002))})`;
     slideRefs.current[index].current.style.transition = `none`;
+    backgroundRef.current.style.transition = `none`;
   };
 
   const handleTouchEnd = (e, index) => {
-    if (deltaY > 200) {
-      slideRefs.current[index].current.style.transform = `translateY(0)`;
-      slideRefs.current[index].current.style.transition = `transform 0.3s`;
+    const endTime = new Date();
+    const timeDiff = endTime - startTime;
+
+    if (Math.abs(deltaY) > 200 || (timeDiff < 300 && Math.abs(deltaY) > 50)) {
       closeFullscreen();
     }
+    slideRefs.current[index].current.style.transform = `translateY(0)`;
+    backgroundRef.current.style.backgroundColor = `rgba(0, 0, 0, 1)`;
+    slideRefs.current[index].current.style.transition = `transform 0.3s`;
+    backgroundRef.current.style.transition = `background-color 0.3s`;
   };
 
   return (
@@ -111,8 +139,8 @@ export const FullscreenSlider = ({
                   ref={slideRefs.current[index]}
                   onClick={(e) => setIsHeaderShow((prev) => !prev)}
                   onTouchStart={handleTouchStart}
-                  onTouchMove={(e, index) => handleTouchMove(e, index)}
-                  onTouchEnd={(e, index) => handleTouchEnd(e, index)}
+                  onTouchMove={(e) => handleTouchMove(e, index)}
+                  onTouchEnd={(e) => handleTouchEnd(e, index)}
                 >
                   {child}
                 </FullscreenSlide>

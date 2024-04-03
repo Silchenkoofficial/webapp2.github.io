@@ -11,6 +11,12 @@ export const FullscreenWrapper = styled.div`
   background-color: rgba(0, 0, 0, 1);
   z-index: 99;
   overflow-y: scroll;
+  scrollbar-width: none; /* Скрывает скроллбары */
+  -ms-overflow-style: none; /* Скрывает скроллбары */
+
+  &::-webkit-scrollbar {
+    display: none; /* Скрывает скроллбары */
+  }
 
   .delete-button {
     width: 36px;
@@ -44,11 +50,11 @@ export const FullscreenSlide = styled.div`
 
   & > img,
   & > video {
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     object-fit: contain;
-    object-position: top;
-    border-radius: 8px;
+    object-position: center;
+    border-radius: none;
   }
 `;
 
