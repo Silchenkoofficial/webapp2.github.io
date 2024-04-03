@@ -61,8 +61,8 @@ export const FullscreenHeader = styled.div`
   z-index: 5;
   display: flex;
   align-items: center;
-  /* background-color: rgba(0, 0, 0, 0.8); */
-  background-color: #18232e;
+  background-color: rgba(#18232e, 0.8);
+  /* background-color: #18232e; */
   color: #fff;
   opacity: ${(props) => (props.isHeaderShow ? "1" : "0")};
 
