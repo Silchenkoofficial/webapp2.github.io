@@ -27,6 +27,9 @@ export const FullscreenSlider = ({
   const slideRefs = useRef(children.map(() => React.createRef()));
   const backgroundRef = useRef(null);
 
+  let startY = 0;
+  let deltaY = 0;
+
   const settings = {
     dots: false,
     infinite: false,
@@ -55,6 +58,26 @@ export const FullscreenSlider = ({
     setIsFullscreen(false);
     if (tg) {
       tg.BackButton.isVisible = false;
+    }
+  };
+
+  const handleTouchStart = (e) => {
+    startY = e.touches[0].clientY;
+  };
+
+  const handleTouchMove = (e, index) => {
+    const currentY = e.touches[0].clientY;
+    deltaY = currentY - startY;
+    slideRefs.current[index].current.style.transform =
+      `translateY(${-deltaY}px)`;
+    slideRefs.current[index].current.style.transition = `none`;
+  };
+
+  const handleTouchEnd = (e, index) => {
+    if (deltaY > 200) {
+      slideRefs.current[index].current.style.transform = `translateY(0)`;
+      slideRefs.current[index].current.style.transition = `transform 0.3s`;
+      closeFullscreen();
     }
   };
 
@@ -87,6 +110,9 @@ export const FullscreenSlider = ({
                   key={index}
                   ref={slideRefs.current[index]}
                   onClick={(e) => setIsHeaderShow((prev) => !prev)}
+                  onTouchStart={handleTouchStart}
+                  onTouchMove={(e, index) => handleTouchMove(e, index)}
+                  onTouchEnd={(e, index) => handleTouchEnd(e, index)}
                 >
                   {child}
                 </FullscreenSlide>
