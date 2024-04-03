@@ -98,6 +98,8 @@ export const TrashIcon = styled(trashSVG)`
   height: 24px;
 `;
 
+export const BackButtonWrapper = styled.div``;
+
 export const BackButton = styled.div`
   display: flex;
   font-size: 16px;
