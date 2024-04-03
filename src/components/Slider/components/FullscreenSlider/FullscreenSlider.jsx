@@ -66,12 +66,8 @@ export const FullscreenSlider = ({
           <BackButtonWrapper>
             {!tg?.BackButton.isVisible && (
               <BackButton onClick={closeFullscreen}>
-                {tg.BackButton.isVisible === false && (
-                  <>
-                    <ArrowLeftIcon />
-                    Назад
-                  </>
-                )}
+                <ArrowLeftIcon />
+                Назад
               </BackButton>
             )}
           </BackButtonWrapper>
