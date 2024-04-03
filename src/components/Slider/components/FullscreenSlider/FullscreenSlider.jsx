@@ -39,11 +39,13 @@ export const FullscreenSlider = ({
   };
 
   useEffect(() => {
-    tg.BackButton.isVisible = true;
-    tg.onClick(() => {
-      setIsFullscreen(false);
-      tg.BackButton.isVisible = false;
-    });
+    if (tg) {
+      tg.BackButton.isVisible = true;
+      tg.onClick(() => {
+        setIsFullscreen(false);
+        tg.BackButton.isVisible = false;
+      });
+    }
   }, []);
 
   const handleDelete = (index) => {
