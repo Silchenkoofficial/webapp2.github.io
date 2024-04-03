@@ -64,12 +64,10 @@ export const FullscreenSlider = ({
       <FullscreenWrapper ref={backgroundRef}>
         <FullscreenHeader isHeaderShow={isHeaderShow}>
           <BackButtonWrapper>
-            {!tg?.BackButton.isVisible && (
-              <BackButton onClick={closeFullscreen}>
-                <ArrowLeftIcon />
-                Назад
-              </BackButton>
-            )}
+            {/*<BackButton onClick={closeFullscreen}>*/}
+            {/*  <ArrowLeftIcon />*/}
+            {/*  Назад*/}
+            {/*</BackButton>*/}
           </BackButtonWrapper>
           <FilesCounter>
             {selectedIdx + 1} из {children.length}
