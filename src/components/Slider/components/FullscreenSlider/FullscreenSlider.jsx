@@ -60,10 +60,10 @@ export const FullscreenSlider = ({
     <Portal>
       <FullscreenWrapper ref={backgroundRef}>
         <FullscreenHeader isHeaderShow={isHeaderShow}>
-          {/* <BackButton onClick={closeFullscreen}>
-            <ArrowLeftIcon />
-            Назад
-          </BackButton> */}
+          <BackButton>
+            {/* <ArrowLeftIcon />
+            Назад */}
+          </BackButton>
           <FilesCounter>
             {selectedIdx + 1} из {children.length}
           </FilesCounter>
