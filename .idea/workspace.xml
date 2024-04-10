@@ -4,20 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3389d213-04d1-411c-83e8-b7d07e323e1b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="3389d213-04d1-411c-83e8-b7d07e323e1b" name="Changes" comment="Test">
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FileInput/FileInput.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FileInput/FileInput.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MediaViewer/MediaViewer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MediaViewer/MediaViewer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MediaViewer/MediaViewer.styled.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MediaViewer/MediaViewer.styled.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MediaViewer/components/VideoSlide/VideoSlide.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MediaViewer/components/VideoSlide/VideoSlide.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/AppLayout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/AppLayout.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/components/Footer/Footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/components/Footer/Footer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/components/MainContent/MainContent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/components/MainContent/MainContent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/StoreContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/StoreContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Form/Form.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Form/Form.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Form/Steps/Step1/Step1.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Form/Steps/Step1/Step1.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Form/Steps/Step3/Step3.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Form/Steps/Step3/Step3.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,10 +55,24 @@
       <workItem from="1712137030881" duration="20748000" />
       <workItem from="1712563668217" duration="599000" />
       <workItem from="1712648733258" duration="598000" />
+      <workItem from="1712755344289" duration="521000" />
     </task>
+    <task id="LOCAL-00001" summary="Test">
+      <option name="closed" value="true" />
+      <created>1712755484811</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1712755484811</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Test" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test" />
   </component>
 </project>

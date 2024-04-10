@@ -5,15 +5,12 @@ import { StoreProvider } from "./store/StoreContext";
 
 export const App = () => {
   return (
-    //<StoreProvider>
-    //  <Router>
-    //    <Routes>
-    //      <Route path="/webapp/:pk" Component={AppLayout} />
-    //    </Routes>
-    //  </Router>
-    //</StoreProvider>
-      <div>
-          <input type="file" multiple={true} />
-      </div>
+    <StoreProvider>
+      <Router>
+        <Routes>
+          <Route path="/webapp/:pk" Component={AppLayout} />
+        </Routes>
+      </Router>
+    </StoreProvider>
   );
 };
