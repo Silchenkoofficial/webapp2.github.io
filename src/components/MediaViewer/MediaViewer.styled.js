@@ -71,4 +71,5 @@ export const VideoLabel = styled.div`
   color: #697180;
   z-index: 10;
   will-change: transform;
+  cursor: pointer;
 `;

@@ -1,62 +1,74 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, forwardRef, memo } from "react";
 
-export const VideoSlide = ({
-  ref,
-  src,
-  file,
-  setVideoDuration,
-  setCurrentTime,
-}) => {
-  const [isPlaying, setIsPlaying] = useState(false);
+export const VideoSlide = memo(
+  forwardRef(
+    ({ src, file, setVideoDuration, setCurrentTime, setIsPlaying }, ref) => {
+      const [poster, setPoster] = useState("");
+      const posterCreated = useRef(false);
 
-  useEffect(() => {
-    if (!ref?.current) return;
+      useEffect(() => {
+        if (!ref?.current || posterCreated.current) return;
 
-    const video = ref.current;
+        const video = ref.current;
 
-    const handleLoadedMetadata = () => {
-      setVideoDuration(video.duration);
-      video.currentTime = 0;
-    };
+        const handleLoadedMetadata = () => {
+          setVideoDuration(video.duration);
+        };
 
-    const handleTimeUpdate = () => {
-      setCurrentTime(video.currentTime);
-    };
+        const handleCanPlayThrough = () => {
+          if (posterCreated.current) return;
+          const canvas = document.createElement("canvas");
+          canvas.width = video.videoWidth;
+          canvas.height = video.videoHeight;
+          const ctx = canvas.getContext("2d");
+          ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+          canvas.toBlob((blob) => {
+            const posterURL = URL.createObjectURL(blob);
+            setPoster(posterURL);
+          });
+          posterCreated.current = true;
+        };
 
-    const handleVideoPause = () => {
-      setIsPlaying(false);
-    };
+        const handleTimeUpdate = () => {
+          setCurrentTime(video.currentTime);
+        };
 
-    const handleVideoEnd = () => {
-      setIsPlaying(false);
-    };
+        const handleVideoPause = () => {
+          setIsPlaying(false);
+        };
 
-    video.addEventListener("loadedmetadata", handleLoadedMetadata);
-    video.addEventListener("timeupdate", handleTimeUpdate);
-    video.addEventListener("ended", handleVideoEnd);
-    video.addEventListener("pause", handleVideoPause);
+        const handleVideoEnd = () => {
+          setIsPlaying(false);
+        };
 
-    return () => {
-      video.removeEventListener("loadedmetadata", handleLoadedMetadata);
-      video.removeEventListener("timeupdate", handleTimeUpdate);
-      video.removeEventListener("ended", handleVideoEnd);
-      video.removeEventListener("pause", handleVideoPause);
-    };
-  }, [ref]);
+        video.addEventListener("loadedmetadata", handleLoadedMetadata);
+        video.addEventListener("loaddata", handleCanPlayThrough);
+        video.addEventListener("timeupdate", handleTimeUpdate);
+        video.addEventListener("ended", handleVideoEnd);
+        video.addEventListener("pause", handleVideoPause);
 
-  return (
-    <>
-      <video
-        ref={ref}
-        width={"150"}
-        height={"100%"}
-        controls={false}
-        playsInline
-        preload="metadata"
-      >
-        <source src={src} type={file?.type} />
-        Тег video не поддерживается вашим браузером.
-      </video>
-    </>
-  );
-};
+        return () => {
+          video.removeEventListener("loadedmetadata", handleLoadedMetadata);
+          video.removeEventListener("loaddata", handleCanPlayThrough);
+          video.removeEventListener("timeupdate", handleTimeUpdate);
+          video.removeEventListener("ended", handleVideoEnd);
+          video.removeEventListener("pause", handleVideoPause);
+        };
+      }, [ref]);
+
+      return (
+        <video
+          ref={ref}
+          width={"150px"}
+          height={"100%"}
+          controls={false}
+          playsInline={true}
+          preload="metadata"
+        >
+          <source src={src} type={file?.type} />
+          Тег video не поддерживается вашим браузером.
+        </video>
+      );
+    }
+  )
+);

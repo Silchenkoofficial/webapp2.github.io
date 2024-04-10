@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Button } from "../Button";
 import {
   Wrapper,
@@ -27,57 +27,43 @@ const FilesProperties = {
 };
 
 export const FileInput = ({ type, onlySlider = false }) => {
-  const { files, loadFiles, saveFile, deleteFile } = useStore();
-  const [Confirm, setConfirm] = useConfirm();
+  const { files, loadFiles, saveFile } = useStore();
   const UploadRef = useRef(null);
   const [isMoreThanTen, setIsMoreThanTen] = useState(false);
 
   useEffect(() => {
     loadFiles(type);
-  }, []);
+  }, [type]);
 
-  const handleFileChange = async (e) => {
-    let selectedFiles = Array.from(e.target.files);
+  const handleFileChange = useCallback(
+    async (e) => {
+      let selectedFiles = Array.from(e.target.files);
 
-    if (
-      selectedFiles?.length > 10 ||
-      files[type]?.length + selectedFiles?.length > 10
-    ) {
-      setIsMoreThanTen(true);
-      selectedFiles = selectedFiles.slice(0, 10 - files[type]?.length);
-    }
-
-    selectedFiles.forEach(async (file) => {
-      try {
-        await saveFile(file, type);
-      } catch (err) {
-        alert(`${file.name} - ${err}`);
+      if (
+        selectedFiles?.length > 10 ||
+        files[type]?.length + selectedFiles?.length > 10
+      ) {
+        setIsMoreThanTen(true);
+        selectedFiles = selectedFiles.slice(0, 10 - files[type]?.length);
       }
-    });
-  };
 
-  const handleDeleteFile = async (fileName) => {
-    setConfirm({
-      title: "Вы действительно хотите удалить эту фотографию?",
-      type: "confirm",
-      confirmText: "Удалить",
-      dismissText: "Отменить",
-    }).then(
-      async () => {
-        setIsMoreThanTen(false);
-        await deleteFile(fileName, type);
-      },
-      () => {}
-    );
-  };
+      selectedFiles.forEach(async (file) => {
+        try {
+          await saveFile(file, type);
+        } catch (err) {
+          alert(`${file.name} - ${err}`);
+        }
+      });
+    },
+    [files, saveFile, type]
+  );
 
-  const chooseFiles = () => {
+  const chooseFiles = useCallback(() => {
     UploadRef.current.click();
-  };
+  }, []);
 
   return (
     <>
-      <Confirm />
       <Wrapper>
         <MediaViewer
           files={files[type]}

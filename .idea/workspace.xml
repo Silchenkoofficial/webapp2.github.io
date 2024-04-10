@@ -6,15 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="3389d213-04d1-411c-83e8-b7d07e323e1b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/FileInput/FileInput.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FileInput/FileInput.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Slider/Slider.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Slider/Slider.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Slider/Slider.styled.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Slider/Slider.styled.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Slider/components/FullscreenSlider/FullscreenSlider.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Slider/components/FullscreenSlider/FullscreenSlider.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Slider/components/FullscreenSlider/FullscreenSlider.styled.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Slider/components/FullscreenSlider/FullscreenSlider.styled.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Slider/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Slider/components/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/file.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/file.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MediaViewer/MediaViewer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MediaViewer/MediaViewer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MediaViewer/MediaViewer.styled.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MediaViewer/MediaViewer.styled.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MediaViewer/components/VideoSlide/VideoSlide.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MediaViewer/components/VideoSlide/VideoSlide.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/AppLayout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/AppLayout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/components/Footer/Footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/components/Footer/Footer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/components/MainContent/MainContent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/components/MainContent/MainContent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/StoreContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/StoreContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Form/Form.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Form/Form.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Form/Steps/Step1/Step1.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Form/Steps/Step1/Step1.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Form/Steps/Step3/Step3.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Form/Steps/Step3/Step3.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,9 +30,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2eaK106T8bZDFxiwAwDpOQN7zGa" />
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
@@ -39,20 +42,20 @@
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "/home/sns/Projects/webapp2.github.io",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/sns/Projects/webapp2.github.io&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -61,7 +64,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1712137029599</updated>
-      <workItem from="1712137030881" duration="8535000" />
+      <workItem from="1712137030881" duration="20748000" />
+      <workItem from="1712563668217" duration="599000" />
+      <workItem from="1712648733258" duration="598000" />
     </task>
     <servers />
   </component>

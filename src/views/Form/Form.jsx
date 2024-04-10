@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-import { useStore } from '../../store/StoreContext';
-import { Wrapper } from './Form.styled';
-import { FinalStep, Step1, Step2, Step3 } from './Steps';
+import { useState, useEffect } from "react";
+import { useStore } from "../../store/StoreContext";
+import { Wrapper } from "./Form.styled";
+import { FinalStep, Step1, Step2, Step3 } from "./Steps";
 
 const Steps = [Step1, Step2, Step3, FinalStep];
 

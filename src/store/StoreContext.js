@@ -1,30 +1,36 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import {
   deleteFileFromIndexedDB,
   getFilesFromIndexedDB,
   saveFileToIndexedDB,
-} from './IndexedDBService';
+} from "./IndexedDBService";
 
 const StoreContext = createContext(null);
 
 const StoreProvider = ({ children }) => {
-  const requestData = JSON.parse(localStorage.getItem('requestData')) || {};
+  const requestData = JSON.parse(localStorage.getItem("requestData")) || {};
   const [state, setState] = useState(
-    JSON.parse(localStorage.getItem('formData')) || {
+    JSON.parse(localStorage.getItem("formData")) || {
       currentStep: 1,
-      photos: '',
-      status: 'run',
-      description: '',
-      transferDate: '',
-      attachments: '',
-      acts: '',
+      photos: "",
+      status: "run",
+      description: "",
+      transferDate: "",
+      attachments: "",
+      acts: "",
       percentage: 0,
     }
   );
   const [files, setFiles] = useState({});
 
   useEffect(() => {
-    localStorage.setItem('formData', JSON.stringify(state));
+    localStorage.setItem("formData", JSON.stringify(state));
   }, [state]);
 
   // Отслеживание процентности заполнения формы
@@ -32,13 +38,13 @@ const StoreProvider = ({ children }) => {
     const filledFields = [
       state.photos,
       state.attachments,
-      state.status === 'performed' && state.acts,
-      state.status !== 'run',
-      state.status !== 'transfer' && state.description.length > 3,
-      ['delayed', 'transfer'].includes(state.status) && state.transferDate,
+      state.status === "performed" && state.acts,
+      state.status !== "run",
+      state.status !== "transfer" && state.description.length > 3,
+      ["delayed", "transfer"].includes(state.status) && state.transferDate,
     ].filter(Boolean).length;
 
-    const totalFields = ['transfer', 'abandonment', 'refusal'].includes(
+    const totalFields = ["transfer", "abandonment", "refusal"].includes(
       state.status
     )
       ? 4
@@ -61,18 +67,15 @@ const StoreProvider = ({ children }) => {
   // Работа с сохранением файлов в IndexedDB
   const loadFiles = async (storeName) => {
     const loadedFiles = await getFilesFromIndexedDB(storeName);
-
-    setState((prevState) => ({
-      ...prevState,
-      [storeName]:
-        loadedFiles.length > 0
-          ? 'mediaFiles'
-          : state[storeName] === 'mediaFiles'
-            ? ''
-            : state[storeName],
-    }));
-
     setFiles((prevFiles) => ({ ...prevFiles, [storeName]: loadedFiles }));
+
+    if (state[storeName] !== (loadedFiles.length > 0 ? "mediaFiles" : "")) {
+      setState((prevState) => ({
+        ...prevState,
+        [storeName]: loadedFiles.length > 0 ? "mediaFiles" : "",
+      }));
+    }
+
     return loadedFiles;
   };
 
@@ -88,13 +91,16 @@ const StoreProvider = ({ children }) => {
     });
   };
 
+  const memoState = useMemo(() => state, [state]);
+  const memoFiles = useMemo(() => files, [files]);
+
   return (
     <StoreContext.Provider
       value={{
-        state,
+        state: memoState,
         setState,
         requestData,
-        files,
+        files: memoFiles,
         loadFiles,
         saveFile,
         deleteFile,

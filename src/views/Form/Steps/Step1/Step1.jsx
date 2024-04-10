@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
-import { Card, FileInput, RadioGroup } from '../../../../components';
-import { photosOptions } from '../../../../constants/radioOptions';
-import { useStore } from '../../../../store/StoreContext';
-import { StepWrapper } from '../../Form.styled';
+import { useEffect, useState } from "react";
+import { Card, FileInput, RadioGroup } from "../../../../components";
+import { photosOptions } from "../../../../constants/radioOptions";
+import { useStore } from "../../../../store/StoreContext";
+import { StepWrapper } from "../../Form.styled";
 
 export const Step1 = ({ visible }) => {
   const { state, setState } = useStore();
@@ -18,15 +18,15 @@ export const Step1 = ({ visible }) => {
     <StepWrapper visible={visible}>
       <Card>
         <Card.Title>Загрузите фото/видео начала работ</Card.Title>
-        {state.photos !== 'mediaFiles' && (
+        {state.photos !== "mediaFiles" && (
           <RadioGroup
-            name={'photos'}
+            name={"photos"}
             options={photosOptions}
             onChange={handleChange}
             selectedValue={state.photos}
           />
         )}
-        <FileInput type={'photos'} />
+        <FileInput type={"photos"} />
       </Card>
     </StepWrapper>
   );
